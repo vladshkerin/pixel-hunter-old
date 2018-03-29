@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 (function () {
   const consts = {
@@ -10,19 +10,15 @@
   const central = document.querySelector(`.central`);
 
   const screens = [];
-  [`greeting`, `rules`, `game-1`, `game-2`, `game-3`, `stats`]
-    .forEach((el) => screens.push(document.querySelector(`#` + el)));
+  [`greeting`, `rules`, `game-1`, `game-2`, `game-3`, `stats`].forEach((el) => {
+    screens.push(document.querySelector(`#` + el));
+  });
 
-  let num_screen = 1;
+  let numScreen = 1;
 
   const getTemplate = (num) => screens[num];
 
-  const replace_contents = (el, num) => {
-    if (consts.isDebug) {
-      console.log(el);
-      console.log(num);
-    }
-
+  const replaceContents = (el, num) => {
     if (el === null) {
       throw new Error(`Element is null`);
     }
@@ -36,33 +32,27 @@
     central.appendChild(templ.content.cloneNode(true));
   };
 
-  const next_screen = () => {
-    if (num_screen < screens.length - 1) {
-      num_screen++;
+  const nextScreen = () => {
+    if (numScreen < screens.length - 1) {
+      numScreen++;
     }
-    replace_contents(central, num_screen);
+    replaceContents(central, numScreen);
   };
 
-  const prev_screen = () => {
-    if (num_screen > 1) {
-      num_screen--;
+  const prevScreen = () => {
+    if (numScreen > 1) {
+      numScreen--;
     }
-    replace_contents(central, num_screen);
+    replaceContents(central, numScreen);
   };
 
   document.addEventListener(`keydown`, function (evt) {
     if (evt.keyCode === consts.ALT_RIGHT_KEYDOWN) {
-      if (consts.isDebug) {
-        console.log(`press ALT_RIGHT_KEYDOWN`);
-      }
-      next_screen();
+      nextScreen();
     } else if (evt.keyCode === consts.ALT_LEFT_KEYDOWN) {
-      if (consts.isDebug) {
-        console.log(`press ALT_LEFT_KEYDOWN`);
-      }
-      prev_screen()
+      prevScreen();
     }
   });
 
-  replace_contents(central, 1);
+  replaceContents(central, 1);
 })();
