@@ -1,18 +1,13 @@
-// 'use strict';
-
-(function () {
-  const consts = {
-    ALT_LEFT_KEYDOWN: 37,
-    ALT_RIGHT_KEYDOWN: 39,
-    isDebug: true
+{
+  const KEY_CODES = {
+    LEFT_KEYDOWN: 37,
+    RIGHT_KEYDOWN: 39,
   };
 
   const central = document.querySelector(`.central`);
 
   const screens = [];
-  [`greeting`, `rules`, `game-1`, `game-2`, `game-3`, `stats`].forEach((el) => {
-    screens.push(document.querySelector(`#` + el));
-  });
+  document.querySelectorAll(`template`).forEach((el) => screens.push(el));
 
   let numScreen = 1;
 
@@ -23,13 +18,13 @@
       throw new Error(`Element is null`);
     }
 
-    const templ = getTemplate(num);
-    if (templ === null) {
+    const template = getTemplate(num);
+    if (template === null) {
       throw new Error(`Template is null`);
     }
 
     central.innerHTML = ``;
-    central.appendChild(templ.content.cloneNode(true));
+    central.appendChild(template.content.cloneNode(true));
   };
 
   const nextScreen = () => {
@@ -46,13 +41,13 @@
     replaceContents(central, numScreen);
   };
 
-  document.addEventListener(`keydown`, function (evt) {
-    if (evt.keyCode === consts.ALT_RIGHT_KEYDOWN) {
+  document.addEventListener(`keydown`, (evt) => {
+    if (evt.altKey && evt.keyCode === KEY_CODES.RIGHT_KEYDOWN) {
       nextScreen();
-    } else if (evt.keyCode === consts.ALT_LEFT_KEYDOWN) {
+    } else if (evt.altKey && evt.keyCode === KEY_CODES.LEFT_KEYDOWN) {
       prevScreen();
     }
   });
 
   replaceContents(central, 1);
-})();
+}
