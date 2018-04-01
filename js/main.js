@@ -4,50 +4,44 @@
     RIGHT_KEYDOWN: 39,
   };
 
-  const central = document.querySelector(`.central`);
-
   const screens = [];
-  document.querySelectorAll(`template`).forEach((el) => screens.push(el));
+  document.querySelectorAll(`template`).forEach((elem) => screens.push(elem));
+
+  const central = document.querySelector(`.central`);
 
   let numScreen = 1;
 
-  const getTemplate = (num) => screens[num];
-
-  const replaceContents = (el, num) => {
-    if (el === null) {
-      throw new Error(`Element is null`);
-    }
-
-    const template = getTemplate(num);
+  const replaceContents = (elem) => {
+    const template = screens[numScreen];
     if (template === null) {
       throw new Error(`Template is null`);
     }
 
-    central.innerHTML = ``;
-    central.appendChild(template.content.cloneNode(true));
+    elem.innerHTML = ``;
+    elem.appendChild(template.content.cloneNode(true));
   };
 
-  const nextScreen = () => {
+  const nextScreen = (elem) => {
     if (numScreen < screens.length - 1) {
       numScreen++;
     }
-    replaceContents(central, numScreen);
+    replaceContents(elem, numScreen);
   };
 
-  const prevScreen = () => {
+  const prevScreen = (elem) => {
     if (numScreen > 1) {
       numScreen--;
     }
-    replaceContents(central, numScreen);
+    replaceContents(elem, numScreen);
   };
 
   document.addEventListener(`keydown`, (evt) => {
     if (evt.altKey && evt.keyCode === KEY_CODES.RIGHT_KEYDOWN) {
-      nextScreen();
+      nextScreen(central);
     } else if (evt.altKey && evt.keyCode === KEY_CODES.LEFT_KEYDOWN) {
-      prevScreen();
+      prevScreen(central);
     }
   });
 
-  replaceContents(central, 1);
+  replaceContents(central);
 }
