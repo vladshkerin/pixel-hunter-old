@@ -1,6 +1,6 @@
 import {getElementFromTemplate} from '../createDOM';
 
-const template = `<div id="rules">
+const template = `
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -34,7 +34,6 @@ const template = `<div id="rules">
       <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
-  </footer>
-</div>`;
+  </footer>`;
 
 export default getElementFromTemplate(template);
