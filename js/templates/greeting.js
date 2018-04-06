@@ -1,6 +1,8 @@
 import {getElementFromTemplate} from '../createDOM';
+import {drawBlock} from '../drawBlock';
+import rules from './rules';
 
-const template = `
+const greetingElem = getElementFromTemplate(`
   <div class="greeting central--blur">
     <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
     <h1 class="greeting__asterisk">*</h1>
@@ -23,6 +25,9 @@ const template = `
       <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
-  </footer>`;
+  </footer>`);
 
-export default getElementFromTemplate(template);
+const greetingContinueElem = greetingElem.querySelector(`.greeting__continue`);
+greetingContinueElem.addEventListener(`click`, () => drawBlock(rules));
+
+export default greetingElem;

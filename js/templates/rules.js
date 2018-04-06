@@ -1,6 +1,9 @@
 import {getElementFromTemplate} from '../createDOM';
+import {drawBlock} from '../drawBlock';
+import game_1 from './game_1';
+import greeting from './greeting';
 
-const template = `
+const rulesElem = getElementFromTemplate(`
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -34,6 +37,21 @@ const template = `
       <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
-  </footer>`;
+  </footer>`);
 
-export default getElementFromTemplate(template);
+const rulesBtnElem = rulesElem.querySelector(`.rules__button`);
+rulesBtnElem.addEventListener('click', () => drawBlock(game_1));
+
+const rulesInputElem = rulesElem.querySelector(`.rules__input`);
+rulesInputElem.addEventListener(`input`, (evt) => {
+  if (evt.target.value.length > 0) {
+    rulesBtnElem.removeAttribute(`disabled`);
+  } else {
+    rulesBtnElem.setAttribute(`disabled`, `true`);
+  }
+});
+
+const backElem = rulesElem.querySelector(`.back`);
+backElem.addEventListener(`click`, () => drawBlock(greeting));
+
+export default rulesElem;
