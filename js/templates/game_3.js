@@ -57,10 +57,10 @@ const gameThreeElem = getElementFromTemplate(`
   </footer>`);
 
 const optionElems = gameThreeElem.querySelectorAll(`.game__option`);
-[].forEach.call(optionElems, (el) => {
+optionElems.forEach((el) => {
   el.addEventListener(`click`, () => {
     drawBlock(stats);
-  })
+  });
 });
 
 export default gameThreeElem;

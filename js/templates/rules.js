@@ -1,6 +1,6 @@
 import {getElementFromTemplate} from '../createDOM';
 import {drawBlock} from '../drawBlock';
-import game_1 from './game_1';
+import gameOne from './game_1';
 import greeting from './greeting';
 
 const rulesElem = getElementFromTemplate(`
@@ -40,7 +40,7 @@ const rulesElem = getElementFromTemplate(`
   </footer>`);
 
 const rulesBtnElem = rulesElem.querySelector(`.rules__button`);
-rulesBtnElem.addEventListener('click', () => drawBlock(game_1));
+rulesBtnElem.addEventListener(`click`, () => drawBlock(gameOne));
 
 const rulesInputElem = rulesElem.querySelector(`.rules__input`);
 rulesInputElem.addEventListener(`input`, (evt) => {
