@@ -1,7 +1,7 @@
 // Функция отрисовки переданного блока на страницу.
 export const drawBlock = (elem) => {
   if (!elem) {
-    throw new Error(`Argument function is null`);
+    throw new Error(`Invalid argument function`);
   }
 
   const central = document.querySelector(`.central`);
