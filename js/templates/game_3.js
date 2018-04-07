@@ -56,8 +56,7 @@ const gameThreeElem = getElementFromTemplate(`
     </div>
   </footer>`);
 
-const optionElems = gameThreeElem.querySelectorAll(`.game__option`);
-optionElems.forEach((el) => {
+gameThreeElem.querySelectorAll(`.game__option`).forEach((el) => {
   el.addEventListener(`click`, () => {
     drawBlock(stats);
   });

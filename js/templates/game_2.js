@@ -59,8 +59,7 @@ const gameTwoElem = getElementFromTemplate(`
     </div>
   </footer>`);
 
-const answerElems = gameTwoElem.querySelectorAll(`.game__answer`);
-answerElems.forEach((el) => {
+gameTwoElem.querySelectorAll(`.game__answer`).forEach((el) => {
   el.addEventListener(`click`, () => {
     if (isChecked(el, `question1`)) {
       drawBlock(gameThree);
