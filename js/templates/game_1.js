@@ -1,6 +1,5 @@
 import {getElementFromTemplate} from '../createDOM';
 import {drawBlock} from '../drawBlock';
-import {isChecked} from '../utils';
 import rules from "./rules";
 import gameTwoElem from "./game_2";
 
@@ -71,13 +70,11 @@ const gameOneElem = getElementFromTemplate(`
     </div>
   </footer>`);
 
-const answerElems = gameOneElem.querySelectorAll(`.game__answer`);
-[].forEach.call(answerElems, (el) => {
-  el.addEventListener(`click`, () => {
-    if (isChecked(el, `question1`) || isChecked(el, `question2`)) {
-      drawBlock(gameTwoElem);
-    }
-  });
+const contentElem = gameOneElem.querySelector(`.game__content`);
+contentElem.addEventListener(`change`, () => {
+  if (contentElem.querySelectorAll(`input:checked`).length === 2) {
+    drawBlock(gameTwoElem);
+  }
 });
 
 const backElem = gameOneElem.querySelector(`.back`);
