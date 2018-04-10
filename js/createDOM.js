@@ -4,8 +4,8 @@ export const getElementFromTemplate = (template) => {
     throw new Error(`Invalid argument function`);
   }
 
-  const container = document.createElement(`template`);
+  const container = document.createElement(`div`);
   container.innerHTML = template;
 
-  return container.content.cloneNode(true);
+  return container;
 };

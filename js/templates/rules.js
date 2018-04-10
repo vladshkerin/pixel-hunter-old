@@ -1,7 +1,7 @@
 import {getElementFromTemplate} from '../createDOM';
 import {drawBlock} from '../drawBlock';
-import gameOne from './game_1';
 import greeting from './greeting';
+import gameOne from './game_1';
 
 const rulesElem = getElementFromTemplate(`
   <header class="header">
