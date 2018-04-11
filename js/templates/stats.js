@@ -1,6 +1,8 @@
 import {getElementFromTemplate} from '../createDOM';
+import {drawBlock} from "../drawBlock";
+import gameThreeElem from "./game_3";
 
-const template = `
+const statsElem = getElementFromTemplate(`
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -118,6 +120,9 @@ const template = `
       <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
-  </footer>`;
+  </footer>`);
 
-export default getElementFromTemplate(template);
+const backElem = statsElem.querySelector(`.back`);
+backElem.addEventListener(`click`, () => drawBlock(gameThreeElem));
+
+export default statsElem;

@@ -1,5 +1,6 @@
 import {getElementFromTemplate} from '../createDOM';
 import {drawBlock} from '../drawBlock';
+import gameTwoElem from "./game_2";
 import stats from './stats.js';
 
 const gameThreeElem = getElementFromTemplate(`
@@ -61,5 +62,8 @@ gameThreeElem.querySelectorAll(`.game__option`).forEach((el) => {
     drawBlock(stats);
   });
 });
+
+const backElem = gameThreeElem.querySelector(`.back`);
+backElem.addEventListener(`click`, () => drawBlock(gameTwoElem));
 
 export default gameThreeElem;
