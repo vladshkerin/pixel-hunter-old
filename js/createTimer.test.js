@@ -12,7 +12,7 @@ describe(`Check create timer`, () => {
     const errorData = [1.3, -32.1, -9, 0, `str`, true, null, Infinity, -Infinity];
     errorData.forEach((data) => {
       const fn = () => createTimer(data);
-      assert.throws(fn, /Invalid/);
+      assert.throws(fn, /Invalid argument/);
     });
   });
 

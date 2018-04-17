@@ -84,34 +84,15 @@ const dataProvider = [
   }
 ];
 
-// const dataProviderError = [
-//   {
-//     lives: ``,
-//     answers: [
-//       {
-//         isSuccess: null,
-//         time: null
-//       },
-//       {
-//         isSuccess: ``,
-//         time: ``
-//       }
-//     ]
-//   },
-//   {
-//     lives: 3,
-//     answers: [
-//       {
-//         isSuccess: true,
-//         time: null
-//       },
-//       {
-//         isSuccess: ``,
-//         time: 1
-//       }
-//     ]
-//   }
-// ];
+const dataProviderError = [
+  {
+    answers: null
+  },
+  {
+    lives: ``,
+    answers: []
+  }
+];
 
 describe(`Check counting scores`, () => {
 
@@ -124,9 +105,10 @@ describe(`Check counting scores`, () => {
     }
   });
 
-  // it(`Check error in data`, () => {
-  //   for (let data of dataProviderError) {
-  //     assert.throw(countingScores(data.answers, data.lives));
-  //   }
-  // });
+  it(`Check error in data`, () => {
+    for (let data of dataProviderError) {
+      const fn = () => countingScores(data.answers, data.lives);
+      assert.throws(fn, /Invalid arguments/);
+    }
+  });
 });
