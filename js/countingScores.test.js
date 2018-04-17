@@ -1,5 +1,5 @@
 import {assert} from 'chai';
-import {countingScores} from "./countingScores";
+import {countingScores} from './countingScores';
 
 const dataProvider = [
   {
@@ -119,6 +119,7 @@ describe(`Check counting scores`, () => {
     for (let data of dataProvider) {
       const actual = countingScores(data.answers, data.lives);
       const expected = data.scores;
+
       assert.equal(actual, expected);
     }
   });

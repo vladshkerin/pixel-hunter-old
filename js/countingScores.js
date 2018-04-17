@@ -16,7 +16,7 @@ const SCORE_ANSWER = {
 
 const countingScores = (answers, lives) => {
   if (typeof answers !== `object` || typeof lives !== `number`) {
-    throw new Error(`Invalid arguments function 'countingScores'`);
+    throw new Error(`Invalid arguments function: 'countingScores'`);
   }
 
   let scores = 0;
